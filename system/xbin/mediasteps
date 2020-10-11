@@ -6,7 +6,7 @@
 
 # Default Variables
 div="=================================";
-MODDIR="/sbin/.magisk/img/VolumeStepsPlus";
+MODDIR="/data/adb/modules/VolumeStepsPlus";
 MODDIR2=$MODDIR/system/xbin;
 scfile=$MODDIR2/mediasteps;
 prop=$MODDIR/system.prop;
