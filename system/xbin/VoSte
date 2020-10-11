@@ -56,7 +56,7 @@ if [ "$selection" == "" ] || [ "$selection" == "1" ] || [ "$selection" == "a" ] 
 clear;
   SCRN="Media-Volume Steps";
   scfile=$MODDIR2/mediasteps;
-  echo "You choosed:  ${SCRN}";
+  echo "You chose:  ${SCRN}";
   sleep 2;
   sh $scfile;
 
@@ -64,7 +64,7 @@ elif [ "$selection" == "2" ] || [ "$selection" == "b" ] || [ "$selection" == "B"
 clear;
   SCRN="Call-Volume Steps":
   scfile=$MODDIR2/callsteps;
-  echo "You choosed:  ${SCRN}";
+  echo "You chose:  ${SCRN}";
   sleep 2;
   sh $scfile;
 
@@ -72,21 +72,21 @@ elif [ "$selection" == "3" ] || [ "$selection" == "c" ] || [ "$selection" == "C"
 clear;
   SCRN="Safe Media ByPass";
   scfile=$MODDIR2/soundbypass;
-  echo "You choosed:  ${SCRN}";
+  echo "You chose:  ${SCRN}";
   sleep 2;
   sh $scfile;
 
 elif [ "$selection" == "4" ] || [ "$selection" == "q" ] || [ "$selection" == "Q" ]; then
 clear;
   SCRN="Exit";
-  echo "You choosed:  ${SCRN}";
+  echo "You chose:  ${SCRN}";
   sleep 4;
   exit;
 
 else
 clear;
 scfile=$MODDIR2/VoSte;
-       echo "You Choosed: ${selection}";
+       echo "You chose: ${selection}";
        echo "This is not correct selection.";
        echo "You can choose only: a(1),b(2),c(3) or q.";
        sleep 3;
