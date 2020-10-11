@@ -10,6 +10,9 @@ MODDIR="/data/adb/modules/VolumeStepsPlus";
 MODDIR2=$MODDIR/system/xbin;
 prop=$MODDIR/system.prop;
 
+# Let's check if root access is granted
+ls /data >/dev/null 2>&1 || { echo "Volume Steps+ requires root privilege!"; echo "First, run 'su' then 'VoSte'"; exit 1; }
+
 # Functions
 get_file_prop() {
 _prop=$2
