@@ -17,7 +17,7 @@
 ### After installing the module the below values will be added to the build.prop or default.prop file (based on your Android version):
 - ro.config.vc_call_vol_steps=10
 - ro.config.media_vol_steps=25
-- audio.safemedia.bypass=true
+- audio.safemedia.bypass=false
 
 ## Requirements:
 - Magisk 17.0 or higer
