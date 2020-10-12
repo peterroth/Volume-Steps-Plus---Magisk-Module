@@ -11,7 +11,7 @@
 ### Raises the Volume Step counts to:
 - In-call volume:	10 (callsteps) 
 - Media volume:		25 (mediasteps)
-- Set safe media bypass to True 
+- Set safe media bypass to false 
 - You can change all these values in terminal by command: VoSte
 
 ### After installing the module the below values will be added to the build.prop or default.prop file (based on your Android version):
