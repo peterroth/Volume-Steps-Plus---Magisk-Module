@@ -108,12 +108,14 @@ VER=$(get_file_prop version $MODDIR/module.prop);
 REL=$(get_file_prop versionCode $MODDIR/module.prop);
 AUT=$(get_file_prop author $MODDIR/module.prop);
 NAM=$(get_file_prop name $MODDIR/module.prop);
+CRED=$(get_file_prop credit $MODDIR/module.prop);
 
 clear;
 
 echo $div;
 echo "${NAM} menu - Version: ${VER}.${REL}";
 echo "Author: $AUT";
+echo "${CRED}"
 echo $div;
 echo "";
 echo $div;
