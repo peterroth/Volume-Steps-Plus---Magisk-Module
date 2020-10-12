@@ -1,4 +1,4 @@
-# Volume Steps+ 1.8 for Magisk v20.0+
+# Volume Steps+ 2.0 for Magisk v20.0+
 
 ## How to use:
 - Open a terminal emulator app on your phone
@@ -32,6 +32,11 @@
 - OnePlus 7 Pro Stock OOS, Android 10 - with Magisk 20.4
 
 # Changelog:
+## Version 2.0
+  - moving to a lower case command, volstep
+  - massive code refactorisation and consolidation
+  - added back option to go to main menu
+
 ## Version 1.8
   - updated module to comply with Magisk v20+
   - removed obsolete files
