@@ -16,16 +16,86 @@ ls /data >/dev/null 2>&1 || { echo "Volume Steps+ requires root privilege!"; ech
 
 # Functions
 get_file_prop() {
-_prop=$2
-_prop=$(grep "$1=" $_prop)
-val=${_prop#*=}
-echo $val
-unset _prop
+  _prop=$2
+  _prop=$(grep "$1=" $_prop)
+  val=${_prop#*=}
+  echo $val
+  unset _prop
 }
+
 set_file_prop() {
-_prop=$3
-sed -i "s/${1}=.*/${1}=${2}/g" $_prop
-unset _prop
+  _prop=$3
+  sed -i "s/${1}=.*/${1}=${2}/g" $_prop
+  unset _prop
+}
+
+quit() {
+  echo ""
+  echo "Exiting now. Good bye!"
+  sleep 2
+  clear
+  exit
+}
+
+mediasteps(){
+  SCRN="Media volume steps";
+  property="ro.config.media_vol_steps";
+  current=$(getprop ro.config.media_vol_steps);
+  applied=$(get_file_prop ro.config.media_vol_steps ${prop});
+}
+
+callsteps() {
+  SCRN="In-call volume steps";
+  property="ro.config.vc_call_vol_steps";
+  current=$(getprop ro.config.vc_call_vol_steps);
+  applied=$(get_file_prop ro.config.vc_call_vol_steps $prop);
+}
+
+changevalue(){
+  echo $div;
+  echo "Increase $SCRN";
+  echo ""
+  echo "The current value is $current";
+
+  if [ "$current" -ne "$applied" ]; then
+    echo "To be applied: $applied" ;
+    echo "NOTE: REBOOT TO APPLY CHANGES";
+  fi 
+
+  echo -n "How much step count do you want? (q: exit) ";
+  read volume
+
+  case $volume in
+    q|Q)
+      quit
+      ;;
+    *)
+      if [ "$volume" == "$applied" ]; then
+        echo "This is the current value."
+      elif [ "$volume" == "" ] || [ -n "$(echo $volume | tr -d '0-9')" ]; then
+        echo "Number only! Try it again."
+        sleep 2
+        clear
+        changevalue
+        exit
+      else
+        echo "Changing to: ${volume}"
+        sleep 1
+        set_file_prop $property ${volume} $prop
+        echo "Reboot device to apply changes."
+        echo -n "Do you want reboot device now? (y/n) or empty is NO: "
+        read reb
+        case $reb in 
+          y|Y)
+            reboot
+            ;;
+          *)
+            exit
+            ;;
+        esac
+      fi 
+      ;;
+  esac
 }
 
 # Extra Variables
@@ -44,54 +114,43 @@ echo "";
 echo $div;
 
 echo "Choose function to edit: ";
-echo "" ;
-
-echo "a (A/1)    - Media-Volume Steps Count CONFIG";
-echo "b (B/2)    - Call-Volume Steps Count CONFIG ";
-echo "c (C/3)    - Safe Media ByPass CONFIG";
-echo "q (Q/4)    - For EXIT";
-
+echo "";
+echo "  a (A/1) - Media volume steps count";
+echo "  b (B/2) - In-call volume steps count";
+echo "  c (C/3) - Safe media bypass";
+echo "  q (Q/4) - For EXIT";
 echo $div;
 
 echo -n "Write selection  (a,b,c or q) or (1,2,3 or 4): ";
 read selection
 
-if [ "$selection" == "" ] || [ "$selection" == "1" ] || [ "$selection" == "a" ] || [ "$selection" == "A" ]; then
-clear;
-  scfile=$MODDIR2/mediasteps;
-  echo "You chose:  ${SCRN}";
-  sleep 1;
-  sh $scfile;
-
-elif [ "$selection" == "2" ] || [ "$selection" == "b" ] || [ "$selection" == "B" ]; then
-clear;
-  scfile=$MODDIR2/callsteps;
-  echo "You chose:  ${SCRN}";
-  sleep 1;
-  sh $scfile;
-
-elif [ "$selection" == "3" ] || [ "$selection" == "c" ] || [ "$selection" == "C" ]; then
-clear;
-  scfile=$MODDIR2/soundbypass;
-  echo "You chose:  ${SCRN}";
-  sleep 1;
-  sh $scfile;
-
-elif [ "$selection" == "4" ] || [ "$selection" == "q" ] || [ "$selection" == "Q" ]; then
-clear;
-  SCRN="Exit";
-  echo "You chose:  ${SCRN}";
-  sleep 2;
-  exit;
-
-else
-clear;
-scfile=$MODDIR2/VoSte;
-       echo "You chose: ${selection}";
-       echo "This is not correct selection.";
-       echo "You can choose only: a(1),b(2),c(3) or q.";
-       sleep 2;
-       clear;
-       sh $scfile;
-       exit;
-fi
+case $selection in
+  1|a|A)
+    mediasteps
+    changevalue
+    ;;
+  2|b|B)
+    callsteps
+    changevalue
+    ;;
+  3|c|C)
+    scfile=$MODDIR2/soundbypass
+    clear
+    echo "Change Safe media bypass"
+    sleep 1
+    sh $scfile
+    ;;
+  4|q|Q)
+    quit
+    ;;
+  *)
+    clear
+    scfile=$MODDIR2/VoSte
+    echo "You chose: ${selection}"
+    echo "There is no such option. You can choose only: a(1),b(2),c(3) or q."
+    sleep 2
+    clear
+    sh $scfile
+    exit
+    ;;
+  esac
