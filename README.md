@@ -1,4 +1,4 @@
-# Volume Steps+ 1.3.9 for Magisk 17.0++
+# Volume Steps+ 1.8 for Magisk v20.0+
 
 ## How to use:
 - Open a terminal emulator app on your phone
@@ -29,8 +29,14 @@
 ## Tested and working on:
 - Xperia XZ Oreo Stock ROM - with Magisk 17.3
 - Xperia Z5 Compact LineAgeOS 14.1 - with Magisk 18.0
+- OnePlus 7 Pro Stock OOS, Android 10 - with Magisk 20.4
 
 # Changelog:
+## Version 1.8
+  - updated module to comply with Magisk v20+
+  - removed obsolete files
+  - code cleanup
+
 ## Version 1.3.0 - 1.3.9
   - module code optimalization and fixes
   - support reboot from module
