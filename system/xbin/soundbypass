@@ -45,7 +45,7 @@ echo "$SCRN";
 echo $div;
 echo "";
 echo "Change value of $SCRN";
-echo "- Write number     1    For: On (True)";
+echo "- Write number     1   For: On (True)";
 echo "- Write number     0   For: Off (False)";
 echo "";
 echo "Current: $current";
