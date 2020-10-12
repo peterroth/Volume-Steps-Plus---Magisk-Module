@@ -36,7 +36,7 @@ NAM=$(get_file_prop name $MODDIR/module.prop);
 clear;
 
 echo $div;
-echo "${NAM} menu   -   Version: ${VER}.${REL}";
+echo "${NAM} menu - Version: ${VER}.${REL}";
 echo "Author: $AUT";
 echo $div;
 echo "";
@@ -52,38 +52,35 @@ echo "q (Q/4)    - For EXIT";
 
 echo $div;
 
-echo -n "Write selection  (a,b,c or q) or (1,2,3 or 4):";
+echo -n "Write selection  (a,b,c or q) or (1,2,3 or 4): ";
 read selection
 
 if [ "$selection" == "" ] || [ "$selection" == "1" ] || [ "$selection" == "a" ] || [ "$selection" == "A" ]; then
 clear;
-  SCRN="Media-Volume Steps";
   scfile=$MODDIR2/mediasteps;
   echo "You chose:  ${SCRN}";
-  sleep 2;
+  sleep 1;
   sh $scfile;
 
 elif [ "$selection" == "2" ] || [ "$selection" == "b" ] || [ "$selection" == "B" ]; then
 clear;
-  SCRN="Call-Volume Steps":
   scfile=$MODDIR2/callsteps;
   echo "You chose:  ${SCRN}";
-  sleep 2;
+  sleep 1;
   sh $scfile;
 
 elif [ "$selection" == "3" ] || [ "$selection" == "c" ] || [ "$selection" == "C" ]; then
 clear;
-  SCRN="Safe Media ByPass";
   scfile=$MODDIR2/soundbypass;
   echo "You chose:  ${SCRN}";
-  sleep 2;
+  sleep 1;
   sh $scfile;
 
 elif [ "$selection" == "4" ] || [ "$selection" == "q" ] || [ "$selection" == "Q" ]; then
 clear;
   SCRN="Exit";
   echo "You chose:  ${SCRN}";
-  sleep 4;
+  sleep 2;
   exit;
 
 else
@@ -92,7 +89,7 @@ scfile=$MODDIR2/VoSte;
        echo "You chose: ${selection}";
        echo "This is not correct selection.";
        echo "You can choose only: a(1),b(2),c(3) or q.";
-       sleep 3;
+       sleep 2;
        clear;
        sh $scfile;
        exit;

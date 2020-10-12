@@ -27,11 +27,7 @@ unset _prop
 }
 
 # Extra Variables
-VER=$(get_file_prop version $MODDIR/module.prop);
-REL=$(get_file_prop versionCode $MODDIR/module.prop);
-AUT=$(get_file_prop author $MODDIR/module.prop);
-NAM=$(get_file_prop name $MODDIR/module.prop);
-SCRN="Call-Volume Steps";
+SCRN="In-call volume steps";
 
 # Main
 clear;
@@ -40,17 +36,10 @@ current=$(getprop ro.config.vc_call_vol_steps);
 applied=$(get_file_prop ro.config.vc_call_vol_steps $prop);
 
 echo $div;
-echo "Increase $SCRN - ${NAM}";
+echo "Increase $SCRN";
 echo $div;
 echo "";
-echo "Version: ${VER}.${REL}";
-echo "Author: $AUT";
-echo "";
-echo "Set own value of $SCRN Count";
-echo $div;
-echo "";
-echo $div;
-echo "Current: $current";
+echo "Current value: $current";
 
 if [ "$current" -ne "$applied" ]; then
 	echo "To be applied: $applied" ;
@@ -59,7 +48,7 @@ fi
 
 echo $div;
 echo "";
-echo -n "Write number of steps count (q for exit):";
+echo -n "Write number of steps count (q for exit): ";
 read volume
 
 if [ "$volume" == "$applied" ]; then
@@ -81,7 +70,7 @@ else
 	sleep 1;
 set_file_prop ro.config.vc_call_vol_steps ${volume} $prop;
 	echo "Reboot device to apply changes.";
-	echo -n "Do you want reboot device now? (y/n) or empty is NO :" ;
+	echo -n "Do you want reboot device now? (y/n) or empty is NO: " ;
 	read reb
 	   if [ "$reb" == "y" ] || [ "$reb" == "Y" ]; then
 	reboot;
