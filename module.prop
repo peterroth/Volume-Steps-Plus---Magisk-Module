@@ -4,4 +4,4 @@ version=1.8
 versionCode=10
 author=peterroth
 credit=original work by byveez21, later WilomanCZ
-description=Increase the step count for Media- and In-call volume on almost all devices with Magisk 20.0+. In a terminal app, run 'su' first, then 'VoSte'.
+description=Increase the step count for Media- and In-call volume on almost all devices with Magisk 20.0+. In a terminal app, run 'su' first, then 'volstep'.

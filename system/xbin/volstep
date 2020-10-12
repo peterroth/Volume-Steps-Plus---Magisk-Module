@@ -12,7 +12,7 @@ MODDIR2=$MODDIR/system/xbin;
 prop=$MODDIR/system.prop;
 
 # Let's check if root access is granted
-ls /data >/dev/null 2>&1 || { echo "Volume Steps+ requires root privilege!"; echo "First, run 'su' then 'VoSte'"; exit 1; }
+ls /data >/dev/null 2>&1 || { echo "Volume Steps+ requires root privilege!"; echo "First, run 'su' then 'volstep'"; exit 1; }
 
 # Functions
 get_file_prop() {
@@ -68,7 +68,7 @@ changevalue(){
   case $volume in
     b|B)
       clear
-      sh $MODDIR2/VoSte
+      sh $MODDIR2/volstep
       exit
       ;;
     q|Q)
@@ -152,7 +152,7 @@ case $selection in
     ;;
   *)
     clear
-    scfile=$MODDIR2/VoSte
+    scfile=$MODDIR2/volstep
     echo "You chose: ${selection}"
     echo "There is no such option. You can choose only: a(1),b(2),c(3) or q."
     sleep 2

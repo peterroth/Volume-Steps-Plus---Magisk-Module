@@ -3,16 +3,16 @@
 ## How to use:
 - Open a terminal emulator app on your phone
 - Write command: su
-- Write command: VoSte
+- Write command: volstep 
 - Follow instructions in terminal loaded script
-- For example to edit media steps value, write su => VoSte => a => number (your value) => reboot => done
+- For example to edit media steps value, write su => volstep => a => number (your value) => reboot => done
 
 ## Description:
 ### Raises the Volume Step counts to:
 - In-call volume:	10 (callsteps) 
 - Media volume:		25 (mediasteps)
 - Set safe media bypass to false 
-- You can change all these values in terminal by command: VoSte
+- You can change all these values in terminal by command: volstep
 
 ### After installing the module the below values will be added to the build.prop or default.prop file (based on your Android version):
 - ro.config.vc_call_vol_steps=10
