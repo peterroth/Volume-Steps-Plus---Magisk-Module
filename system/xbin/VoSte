@@ -62,10 +62,15 @@ changevalue(){
     echo "NOTE: REBOOT TO APPLY CHANGES";
   fi 
 
-  echo -n "How much step count do you want? (q: exit) ";
+  echo -n "How much step count do you want? (b: main menu, q: exit) ";
   read volume
 
   case $volume in
+    b|B)
+      clear
+      sh $MODDIR2/VoSte
+      exit
+      ;;
     q|Q)
       quit
       ;;
